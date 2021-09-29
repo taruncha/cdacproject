@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en">
+
+<head>
+  <title>Gym Booking</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <!--fontawesome icon-->
+ 
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+ 
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script> 
+
+  
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+  <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+<style>
+    .flip-box {
+   background-color: transparent;
+  
+   height: 200px;
+ 
+ }
+ 
+ .flip-box-inner {
+   position: relative;
+  
+   text-align: center;
+   transition: transform 1s;
+   transform-style: preserve-3d;
+ }
+ 
+ .flip-box:hover .flip-box-inner {
+   transform: rotateY(180deg);
+ }
+ 
+ .flip-box-front, .flip-box-back {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   color: white;
+   -webkit-backface-visibility: hidden;
+   backface-visibility: hidden;
+ }
+ 
+ .flip-box-front {
+   background-color: #bbb;
+   color: black;
+ }
+ 
+ .flip-box-back {
+ margin-top:20%;
+   background: rgba(255,0,0,0.0);
+   color: black;
+   transform: rotateY(180deg);
+ }
+ a:hover {
+	color: white;
+}
+#lnk{
+color: #c83660;
+}
+#lnk:hover {
+	color: white;
+}
+.card-title{
+color: white;
+}
+label{
+color:black;
+font-weight: bold;
+
+}
+#img{
+border-radius:200px;
+}
+</style>
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" onload="span();getLocation();" style=" font-family: cursive;">
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <div class="site-logo">
+           <a href="gym">Workout<span>.</span></a>
+          </div>
+          <div class="">
+            <nav class="site-navigation position-relative text-left" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+               
+                <li><a href="gymData" class="nav-link">Gyms</a></li>
+              </ul>
+            </nav>
+          </div>
+          
+          
+          <div class="ml-auto">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+               
+                <li><a href="#services-section" class="nav-link">Services</a></li>
+                <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                <li ><a href="loginForm" class="nav-link " >Signup</a></li>
+              
+                <li ><a href="register" class="nav-link" >Signin</a></li>
+                
+               <li ><a href="" class="nav-link "   data-bs-toggle="modal" data-bs-target='#mod'>Gym Signin</a></li>
+                  
+              </ul>
+            </nav>
+            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a>
+          </div>
+
+        </div>
+      </div>
+
+    </header>
+  <!--Gym Login modal -->
+  <div class="modal" id="mod" data-bs-backdrop='static' style="margin-top: 100px;">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+        <form action="gymLogin" method="post">
+           <div class="modal-header">
+        <h3 class="fw-normal">Login</h3> 
+        <button type="button" class="btn btn-close p-0" data-bs-dismiss='modal'>X</button>   
+        </div>
+<div class="modal-body ">
+<div>
+<label class="">Username</label>
+</div>
+<div>
+<input class="form-control" type="text" name="uname"  placeholder="Login Username"> 
+</div>
+<div>
+<label class="">Password</label>
+</div>
+<div>
+<input class="form-control" type="password" name="pwd" placeholder="Login Password"> 
+</div>
+</div>
+
+<div class="modal-footer">
+<div>
+<input class="btn btn-primary" type="submit" value="Login" >
+<a class="btn btn-primary" type="submit" href="gymRegister" >Register</a>
+<button type="button" class="btn btn-primary" data-bs-dismiss='modal'>Close</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!--Gym Login modal -->
+   
+    <a id="bgndVideo" class="player mb_YTPlayer isMuted" data-property="{videoURL:'https://www.youtube.com/watch?v=w-cRWOjlk8c',showYTLogo:false, showAnnotations: false, showControls: false, cc_load_policy: false, containment:'#home-section',autoPlay:true, mute:true, startAt:255, stopAt: 271, opacity:1}" style="display: none;">
+    </a>
+    <div class="intro-section" id="home-section" style="background-color: #ccc;">
+      <div class="container">
+
+        <div class="row align-items-center">
+          <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
+            <h1 class="mb-3">Fitness Help Me Feel Better</h1>
+            <p class="lead mx-auto desc mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores nisi minus perspiciatis optio, id deserunt.</p>
+            
+<form action="nearBy">
+            <p class="lead mx-auto desc mb-5">Your location :<br>
+            <input id="json-result" class="bg-transparent border-0 shadow desc px-2 text-center" style="outline: none;" name="loc">
+           
+		<br><br>
+			<button class="btn btn-outline-white py-3 px-5" type="submit"> Click to see Gyms near by you</button>
+			 </p>
+ </form>  
+  
+            
+          </div>
+        </div>
+
+      </div>
+    </div>
+<br>
+<!--  -->
+
+<div class="container-fluid">
+
+    <div class="row pl-5 shadow">
+     <table style="width: 100%;">
+            
+        <tr th:each="temp:${locGym}">
+        
+           <div class="card custom-card p-0 shadow text-center rounded-pill mt-5 mb-5 ml-5" style="width: 20rem;display: inline-block;background-color: grey;border-radius: 200px;">
+                   
+                   
+                    <div class="flip-box">
+                      <div class="flip-box-inner">
+                       <div class="flip-box-front">
+                      <img id="img" src="http://thestyleinspiration.com/wp-content/uploads/2018/12/Gym-Goals-1.jpg" class="card-img-top rounded-pill shadow" alt="gym image" >
+                    </div>
+                    <div class="flip-box-back">
+                      <h2>Book us</h2>
+                      <p>Be fit be strong</p>
+                    </div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                     <label><b>Gym Name:</b></label>
+                <span class="card-title" th:text=${temp.gymname}>NA</span><br> 
+                 <label><b>Price:</b></label>
+                <span  class="card-title" th:text=${temp.price}>NA</span><br>
+            <label><b>City:</b></label>
+                <span class="card-title" th:text=${temp.city}>NA</span>,<br>
+                <label><b>State:</b></label>
+                 <span class="card-title" th:text=${temp.state}>NA</span>,<br>
+                <label><b>Country:</b></label>
+                <span class="card-title" th:text=${temp.country}>NA</span>,<br>
+            </div>
+            
+            <div class="card-footer rounded-circle text-center" style="background-color: buttonshadow;">
+ 
+        			<a th:href="loginForm" class="btn btn-outline-warning">Login to Book</a>
+                        </div>
+                    </div>
+                </tr>
+            
+        </table>       
+             
+           </div>
+
+
+
+</div>
+
+<!--  -->
+<br>
+    <div class="site-section">
+      <div class="container">
+
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-md-8 section-heading">
+            <span class="subheading">Stay Healthy</span>
+            <h2 class="heading mb-3">Setup Your Body With Workout</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, mollitia amet nihil!
+            Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+          </div>
+        </div>
+
+        <!-- Slider -->
+        <div class="owl-carousel nonloop-block-14 block-14" data-aos="fade">
+          <div class="slide">
+            <div class="ftco-feature-1">
+              <span class="icon flaticon-fit"></span>
+              <div class="ftco-feature-1-text">
+                <h2>Consectuetur elit</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis quo, cumque fuga.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="ftco-feature-1">
+              <span class="icon flaticon-gym-1"></span>
+              <div class="ftco-feature-1-text">
+                <h2>Veritatis quo</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto quasi quia iure unde perferendis!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="ftco-feature-1">
+              <span class="icon flaticon-gym"></span>
+              <div class="ftco-feature-1-text">
+                <h2>Perspiciatis modi</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi tempora nostrum, perspiciatis modi eaque!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="ftco-feature-1">
+              <span class="icon flaticon-vegetables"></span>
+              <div class="ftco-feature-1-text">
+                <h2>Magnam ab eius</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, magnam ab eius autem est.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="ftco-feature-1">
+              <span class="icon flaticon-fruit-juice"></span>
+              <div class="ftco-feature-1-text">
+                <h2>Impedit alias</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis beatae impedit alias ad unde?</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="slide">
+            <div class="ftco-feature-1">
+              <span class="icon flaticon-stationary-bike"></span>
+              <div class="ftco-feature-1-text">
+                <h2>Recusandae nisi</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia, minima quod optio recusandae nisi.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="bgimg" style="background-image: url('images/bg_2.jpg');"  data-stellar-background-ratio="0.5">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-7">
+            <h2 class="">Get The Result You Want</h2>
+            <p class="lead mx-auto desc mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta ut quisquam, distinctio illo, debitis repudiandae.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <br>
+   
+
+    <br><br><br>
+    <div class="bgimg" style="background-image: url('images/bg_3.jpg');"  data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-7">
+            <h2 class="">Every Step Counts</h2>
+            <p class="lead mx-auto desc mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit ipsam tempore, sapiente modi facilis est?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+    <div class="bgimg" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-7">
+            <h2 class="">Your Fitness Partner Where Ever You Are</h2>
+            <p class="lead mx-auto desc mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, nisi cum officia alias recusandae neque reprehenderit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="site-section" id="services-section">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-5" data-aos="fade-up">
+          <div class="col-md-8  section-heading">
+            <span class="subheading">Fitness Services</span>
+            <h2 class="heading mb-3">Services</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
+              texts.
+              </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 mb-4 col-md-6" data-aos="fade-up" data-aos-delay="">
+            <div class="ftco-feature-1">
+              <span class="icon flaticon-fit"></span>
+              <div class="ftco-feature-1-text">
+                <h2>Be Fit</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur tempora delectus aut, mollitia. Veritatis!</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="ftco-feature-1">
+              <span class="icon flaticon-gym-1"></span>
+              <div class="ftco-feature-1-text">
+                <h2>Join Club</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae tenetur numquam sunt sequi similique.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="ftco-feature-1">
+              <span class="icon flaticon-gym"></span>
+              <div class="ftco-feature-1-text">
+                <h2>Gym Fitness</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam fuga, blanditiis. Possimus, error, deserunt.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+<div style="width: 100%; overflow: hidden; height: 300px;">
+  <iframe 
+     src="https://www.google.com/maps/d/embed?mid=1vwOVDkdvKMcqWegKDOloIhErBnZwpX7P"
+     width="100%"
+     height="600"
+     style="border:0; margin-top: -150px;">
+  </iframe>
+</div>
+
+    
+    <footer id="contact-section" class="footer-section bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h3 class="text-white">About Workout</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam facere optio eligendi.</p>
+          </div>
+
+          <div class="col-md-3 ml-auto">
+            <h3 class="text-white">Links</h3>
+            <ul class="list-unstyled footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Trainer</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <h3>Contact us</h3>
+            <a href="https://twitter.com/Tarun486Tc"><i class="fab fa-twitter social-icon"></i></a>&emsp;
+            <a href="https://www.facebook.com/profile.php?id=100008805401645"><i class="fab fa-facebook social-icon"></i></a>&emsp;
+            <a href="https://www.instagram.com/avengers/"><i class="fab fa-instagram social-icon"></i></a>&emsp;
+            <a href="mailto:tarun486.tc@gmail.com"><i class="fas fa-envelope social-icon"></i></a>
+          </div>
+
+        </div>
+
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <div class=" pt-5">
+              <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved 
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+
+
+  </div>
+  <!-- .site-wrap -->
+  <script>
+
+    const Http = new XMLHttpRequest();
+    function getLocation() {
+        console.log("getLocation Called");
+        var bdcApi = "https://api.bigdatacloud.net/data/reverse-geocode-client"
+
+        navigator.geolocation.getCurrentPosition((position) => {
+                bdcApi = bdcApi+ "?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
+                getApi(bdcApi);
+             
+               
+            },
+            (err) => { getApi(bdcApi); },
+            {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            
+            }
+            );
+    }
+    function getApi(bdcApi) {
+        Http.open("GET", bdcApi);
+       Http.send();
+        Http.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+            	 console.log("getLocation Called : "+bdcApi);
+                var obj=JSON.parse(this.responseText);
+                document.getElementById("json-result").value =  obj.locality;
+            }
+        };
+    }
+   
+</script>
+<script type="text/javascript">
+  function span(){
+	  setTimeout(function() {
+		  $("#dis").fadeOut('fast');
+      },2000);
+  }
+  </script>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/jquery.mb.YTPlayer.min.js"></script>
+
+
+
+
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

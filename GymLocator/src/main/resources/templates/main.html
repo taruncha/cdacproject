@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Gyms</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+<!-- font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" >
+<link href="https://fonts.googleapis.com/css2?family=Frijole&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>   
+
+
+<style type="text/css">
+
+a {
+	color: black;
+}
+#flipImage {
+	transform: rotateY(180deg);
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-40%, -50%);
+}
+.tocenter {
+  position: relative;
+  text-align: center;
+ /*  color: white; */
+}
+</style>
+</head>
+<body style="background-color: grey	" style=" font-family: cursive;">
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color:black">
+   
+        <a class="navbar-brand px-3" href="gym"><img alt="" src="https://demo.casethemes.net/gymo/wp-content/themes/gymo/assets/images/logo-light.png" style="height: 30px;width: 100px"></a>
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#col">
+            <span class="navbar-toggler-icon"></span>
+            <i class="bi bi-list-ul"></i>
+        </button> -->
+        <div id="col" class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a href="gym" class="nav-link active">Home</a>
+                </li>
+                 <li class="nav-item">
+                    <a href="gymData" class="nav-link active">Gyms</a>
+                </li>
+            
+                <li class="nav-item dropdown">
+                    <a href="" class="nav-link active" data-bs-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu ">
+                        <li><a class="dropdown-item active" href="#">Abs Fitness</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">SilverFitnessClub</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Golds gym</a></li>
+                        
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">Dashboard</a>
+                </li>
+                 
+
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="loginForm" class="nav-link active" >Signup</a></li>
+                <li class="nav-item"><a href="loginForm" class="nav-link active" data-bs-toggle="modal">
+                <i class="bi bi-person-fill"></i></a>
+                </li>
+
+                <li class="nav-item"><a href="register" class="nav-link active" >Signin</a></li>
+                <li class="nav-item"><a href="register" class="nav-link active" data-bs-toggle="modal">
+                <i class="bi bi-person-fill"></i></a>
+                </li>
+                 <li class="nav-item"><a href="" class="nav-link active"   data-bs-toggle="modal" data-bs-target='#mod'>Gym Signin</a></li>
+                  
+                <!--   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target='#mod'>Login</button> -->
+                
+                <li class="nav-item"><a href="" class="nav-link active" data-bs-toggle="modal" data-bs-target='#mod'>
+                <i class="bi bi-person-fill" ></i></a>
+                </li>
+            </ul>
+        </div>
+     
+    </nav>
+    <!--Gym Login modal -->
+    <div class="modal" id="mod" data-bs-backdrop='static'>
+                    <div class="modal-dialog ">
+                        <div class="modal-content">
+                        <form action="gymLogin" method="post">
+                           <div class="modal-header">
+                        <h3 class="fw-normal">Login</h3> 
+                        <button type="button" class="btn btn-close" data-bs-dismiss='modal'></button>   
+                        </div>
+        <div class="modal-body ">
+            <div>
+                <label class="">Username</label>
+            </div>
+            <div>
+                <input class="form-control" type="text" name="uname"  placeholder="Login Username"> 
+            </div>
+            <div>
+                <label class="">Password</label>
+            </div>
+            <div>
+                <input class="form-control" type="password" name="pwd" placeholder="Login Password"> 
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+<div>
+	<input class="btn btn-primary" type="submit" value="Login" >
+  <a class="btn btn-primary" type="submit" href="gymRegister" >Register</a>
+    <button class="btn btn-primary" data-bs-dismiss='modal'>Close</button>
+</div>
+       </div>
+       </form>
+       </div>
+       </div>
+       </div>
+   <!--Gym Login modal -->
+    <br>
+    <div class="px-5 container-fluid ">
+    <div class="row">
+    <div class="col-6 p-0">
+   
+              <img class="img-responsive  thumbnail rounded" id="flipImage" style="width: 100%" src="https://demo.casethemes.net/gymo/wp-content/uploads/2021/01/bg-slide-right.png" width="1000" height="500" alt="gym image">
+         
+    </div>
+    <div class="col-6 text-center p-0">
+     
+     <div class="tocenter">
+   <img class="img-responsive  thumbnail" id="flipImage" style="width: 100%" src="https://demo.casethemes.net/gymo/wp-content/uploads/2021/01/bg-slide-left.png" width="1000" height="500" alt="gym image">
+         
+  <div class="centered responsive">
+  <h1 align="left" style="font-size: 60px; font-family: 'Frijole', cursive; color: #BCFFB9" >Gym Fitness for good health</h1>
+  <h1 align="left" style="font-family: 'Frijole', cursive;"></h1>
+  <p align="left" style="font-family: 'Pacifico', sans-serif; font-size: 25px;color: #fff;">It is a long established fact that a reader will be distracted by the readable content tutorials of instute. </p>
+  </div>
+</div>
+
+    </div>
+    
+    </div>
+
+    <main>
+    
+       
+        <section class="section--category section--category-key-points category--sport has-type-shape-2 ">
+            <svg class="category--shape category--shape--top shape--type-2 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 186"><g data-name="lay-2"><path d="M0 134.81V186h1920V0L0 134.81z" data-name="lay-1"/></g></svg>
+            <marquee behavior="scroll" direction="left" scrollamount="15"><h1>If you think lifting is dangerous, try being weak. Being weak is dangerous.</h1></marquee>
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="title title--h2 has-subtitle"><span class="highlight"  ></span>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</h2>
+                    <p class="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in velit sed lorem sagittis blandit. 
+                    Vestibulum tristique risus purus, id volutpat ex dignissim at. Sed varius lacinia diam ac facilisis. 
+                    Pellentesque a orci eget urna luctus placerat. Duis ultricies non nibh in euismod. Nunc bibendum et lectus quis vehicula. 
+                    Pellentesque justo neque,faucibus quis quam id, suscipit accumsan lorem. Cras dignissim erat in sapien aliquet ultrices. 
+                    Sed vehicula metus eu dapibus hendrerit. Curabitur consectetur arcu dui, id egestas nunc semper vitae.</p>
+                </header>
+                
+                
+        <div class="sec--cat-row">
+            <div class="sec--cat-col sec--cat-picture">   
+       <img  width="800" height="630" class="img-responsive shadow rounded-circle thumbnail" style="width: 100%" 
+       src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/caucasian-man-lifting-barbell-in-gymnasium-royalty-free-image-685014251-1543616516.jpg"
+        alt="category hero image"/>
+        
+        
+          </div>
+              <div class="sec--cat-col sec--cat-data">
+                <ul class="key-points-list">
+                    <li class="key-points-list--item">
+                      <i class="bi bi-award-fill"></i>
+                        No design skills needed
+                    </li>
+                    <li class="key-points-list--item">
+                      <i class="bi bi-easel"></i>
+                        Fully responsive
+                    </li>
+                    <li class="key-points-list--item">
+                        <i class="bi bi-arrow-down-circle"></i>
+                        Choose from a variety of templates
+                    </li>
+                    <li class="key-points-list--item">
+                        <i class="fas ico fa-apple-alt"></I>
+                        Insert your own logo
+                    </li>
+                    <li class="key-points-list--item">
+                       <i class="bi bi-camera-fill"></i>
+                        Add photos of staff and services
+                    </li>
+                    <li class="key-points-list--item">
+                       <i class="bi bi-palette"></i>
+                        Adjust colors to match your brand colors
+                    </li>
+                    <li class="key-points-list--item">
+                        <i class="far ico fa-images"></i>
+                        Gallery of photos from your business
+                    </li>
+                    <li class="key-points-list--item">
+                        <i class="fab ico fa-youtube"></i>
+                        <a href="https://youtube.com" target="_blank">Video tutorials</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+            </div>
+        </section>
+        
+    </main>
+    
+    </div>
+    
+ <footer class=" text-center p-2" id="footer">
+    <div class="container-fluid">
+    <a href="https://twitter.com/Tarun486Tc"><i class="fab fa-twitter social-icon"></i></a>&emsp;
+    <a href="https://www.facebook.com/profile.php?id=100008805401645"><i class="fab fa-facebook social-icon"></i></a>&emsp;
+    <a href="https://www.instagram.com/avengers/"><i class="fab fa-instagram social-icon"></i></a>&emsp;
+    <a href="mailto:tarun486.tc@gmail.com"><i class="fas fa-envelope social-icon"></i></a>&emsp;
+    <p class="p-1">Copyright &copy; <script>document.write(new Date().getFullYear());</script> Gym Booking</p>
+  </div>
+  </footer>	
+   <script type="text/javascript">
+  
+  function span(){
+	  setTimeout(function() {
+		  $("#dis").fadeOut('fast');
+      }, 5000);
+	 
+  }
+  
+  </script>
+</body>
+</html>

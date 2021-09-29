@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Gym Booking</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <!--fontawesome icon-->
+ 
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+ 
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script> 
+
+  
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <!-- <link rel="stylesheet" href="css/style1.css"> -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+  <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+.flip-box {
+   background-color: transparent;
+  
+   height: 200px;
+ 
+ }
+ 
+ .flip-box-inner {
+   position: relative;
+  
+   text-align: center;
+   transition: transform 1s;
+   transform-style: preserve-3d;
+ }
+ 
+ .flip-box:hover .flip-box-inner {
+   transform: rotateY(180deg);
+ }
+ 
+ .flip-box-front, .flip-box-back {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   color: white;
+   -webkit-backface-visibility: hidden;
+   backface-visibility: hidden;
+ }
+ 
+ .flip-box-front {
+   background-color: #bbb;
+   color: black;
+ }
+ 
+ .flip-box-back {
+ margin-top:20%;
+   background: rgba(255,0,0,0.0);
+   color: black;
+   transform: rotateY(180deg);
+ }
+ a:hover {
+	color: white;
+}
+#lnk{
+color: #c83660;
+}
+#lnk:hover {
+	color: white;
+}
+
+      body{
+          background-color: grey;
+      }
+      #input{
+          background-color: cornsilk;
+      }
+      img{
+          border-radius: 20px;
+         
+      }
+      label{
+          color: black;
+          font-weight: bold;
+      }
+      span {
+	color: white;
+}
+  </style>
+
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" onload="span()" style=" font-family: cursive;">
+
+  <div class="site-wrap" th:each="temp:${LoginGymDetail}">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <div class="site-logo">
+  			 <a href="gym">Workout<span>.</span></a>
+         
+          
+          </div>
+          <div class="">
+            <nav class="site-navigation position-relative text-left" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                <li><a href="#home-section" class="nav-link">Home</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          
+          <div class="ml-auto">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+               
+               
+                <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                <li><a>Profile</a>
+             <li class="nav-item"><a href="logout" class="nav-link active" >Logout</a></li>
+               
+              
+              </ul>
+            </nav>
+            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a>
+          </div>
+
+        </div>
+      </div>
+
+    </header><br><br><br>
+   <!--Code-->
+   <div class="container-fluid ">
+    <h1 class="text-center shadow rounded-circle px-5 container" style="background-color: hsl(343, 57%, 50%);">
+    <mark style="color:black;font-weight: bold;border-radius: 50px;" class="px-4 pt-1 pb-2" >Your gym details</mark>
+    </h1><br> 
+    <h1 align="center">Name :<span th:text=${temp.gymname} style="text-align: center; border-radius: 20px;" class=" px-3" >NA</span>
+     <a href="" class="btn btn-outline-warning px-2 " style="color:black;font-family: cursive;" data-bs-toggle="modal" data-bs-target='#gname'>Add</a>
+    </h1>
+    <br>
+   <div class="row ">
+     <div class="col-sm-3 px-5">
+        <h1>See booking details</h1>
+    <a href="bookingDetails" class="btn btn-outline-warning mt-2 container " style="color:black;width: 50%;" >Check</a>
+     </div>
+
+     <div class="col-sm-6 row " style=" font-family: cursive;">  
+     <div class="col-sm-6">
+         <label><b>Address Details:</b></label>
+         <a href="" class="btn btn-outline-warning mt-2 container px-2" style="color:black;width: 10%;" data-bs-toggle="modal" data-bs-target='#mode'>Add</a>
+  <br>
+          <label><b>Address:</b></label>
+           <span th:text=${temp.addressline}>NA</span>,<br> 
+           <span th:text=${temp.city}>NA</span>,<br>
+           <span th:text=${temp.state}>NA</span>,<br>
+           <label><b>Country:</b></label>
+           <span th:text=${temp.country}>NA</span>,<br>
+           <label><b>Pincode:</b></label>
+           <span th:text=${temp.pincode}>NA</span><br> 
+     </div>	
+     <div class="col-sm-6">
+      <label><b>Contact Details:</b></label>
+      <a href="" class="btn btn-outline-warning mt-2 container px-2 " style="color:black;width: 10%;" data-bs-toggle="modal" data-bs-target='#contact'>Add</a>
+<br>
+           <label><b>Email:</b></label>
+           <span th:text=${temp.gymemail}>NA</span><br> 
+           <label><b>Contact:</b></label>
+           <span  th:text=${temp.contact}>NA</span><br>  
+                             <label><b>Personal Details:</b></label>
+      <a href="" class="btn btn-outline-warning mt-2 container px-2 " style="color:black;width: 10%;" data-bs-toggle="modal" data-bs-target='#detail'>Add</a>
+<br>
+       <label><b>AAdhar card :</b></label><br>
+         <span th:text=${temp.aadhar}>NA</span>,<br>  
+         
+     </div>
+     </div>
+
+     <div class="col-sm-3" >
+      
+                 
+  <label><b>Price and offer Details:</b></label>
+      <a href="" class="btn btn-outline-warning mt-2 container px-2" style="color:black;width: 10%;" data-bs-toggle="modal" data-bs-target='#price'>Add</a>
+     <br>
+     
+                <label><b>Price:</b></label>
+                <span th:text=${temp.price}>NA</span><br> 
+                <label><b>Offer 1 month:</b></label>
+                <span  th:text=${temp.offer}>NA</span><br>
+                <label><b>Offer 6 month:</b></label>
+                <span  th:text=${temp.offermonth}>NA</span><br>
+                <label><b>Offer 1 year:</b></label>
+                <span  th:text=${temp.offeryear}>NA</span><br>  
+    
+    </div>
+   </div>
+   </div>
+   <div class="mx-5">
+   <label><b>Trainer Details:</b></label>
+   <a href="" class="btn btn-outline-warning mt-2 container px-2" style="color:black;width: 3%;" data-bs-toggle="modal" data-bs-target='#ins'>Add</a>
+   <div  th:each="trainer , iterStat : ${trainerdetail}">
+   
+      
+      <br>
+      <label>No.</label>
+      <span th:text="${iterStat.count}"></span>&emsp;
+                 <label><b>Name:</b></label>
+                  <span th:text=${trainer.trainername}>NA</span>
+                 <label><b>Experience:</b></label>
+                 <span  th:text=${trainer.experience}>NA</span>
+                  <label><b>Gender:</b></label>
+                 <span  th:text=${trainer.gender}>NA</span> &ensp;|&ensp;
+                 <a th:href="@{/deleteTrainer(id=${trainer.id})}"  >Delete</a>
+                 <br> 
+   
+   </div></div>
+       <!-- model gymname-->
+        
+      <div class="modal modal fade" id="gname" data-bs-backdrop='static' style="margin-top: 100px;">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+            <form action="updateGymName" method="post">
+               <div class="modal-header">
+               <h3>Contact Update</h3>
+            <button type="button" class="btn btn-close p-1" data-bs-dismiss='modal'>X</button>   
+            </div>
+    <div class="modal-body ">
+     
+  <div class="row">
+  <div class="col-sm-12">
+   <input class="form-control mt-1" type="text" name="gymname" id="" placeholder="Name">
+  </div>
+  </div>
+    </div>
+    <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-warning" style="width: 98%;color:black;">Submit</button>
+    <a type="button" class="btn btn-outline-warning" style="width: 98%;color:black;" data-bs-dismiss='modal'>close</a>
+    </div></form>
+    </div>
+    </div></div>
+        <!-- model end -->
+  <!-- model address-->
+      <div class="modal modal fade" id="mode" data-bs-backdrop='static' style="margin-top: 100px;">
+      <div class="modal-dialog ">
+          <div class="modal-content">
+          <form action="update" method="post">
+             <div class="modal-header">
+             <h3>Address Update</h3>
+          <button type="button" class="btn btn-close p-1" data-bs-dismiss='modal'>X</button>   
+          </div>
+  <div class="modal-body ">
+   
+    <label style="color: black;font-weight: bold;">Address:</label>
+    
+    <textarea rows="4" cols="10" class="form-control mt-1" name="addressline" placeholder="Address (Area and Street)"></textarea>
+ 
+<div class="row">
+<div class="col-sm-6">
+ <input class="form-control mt-1" type="text" name="city" id="" placeholder="City/District/Town">
+</div>
+<div class="col-sm-6">
+     <select name="state" class="form-control mt-1" style="height: 50px;">
+              <option value="" hidden="">--Select State--</option>
+              <option value="Andaman &amp; Nicobar Islands">Andaman&amp; Nicobar Islands</option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Dadra">Dadra&amp; Nagar Haveli &amp; Daman &amp; Diu</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jammu &amp; Kashmir">Jammu &amp; Kashmir</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Ladakh">Ladakh</option>
+              <option value="Lakshadweep">Lakshadweep</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Puducherry">Puducherry</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="West Bengal">West Bengal</option></select>
+</div>
+<div class="col-sm-6">
+   <input class="form-control mt-1" type="text" name="country" id="" placeholder="Country">
+</div>
+<div class="col-sm-6">
+ <input class="form-control mt-1" type="text" name="pincode" maxlength="6" id="" placeholder="Pin Code">
+</div>
+</div>
+  </div>
+  <div class="modal-footer">
+  <button type="submit" class="btn btn-outline-warning" style="width: 98%;color:black;">Submit</button>
+  <a type="button" class="btn btn-outline-warning" style="width: 98%;color:black;" data-bs-dismiss='modal'>close</a>
+  </div></form>
+  </div>
+  </div></div>
+      <!-- model end -->
+      
+        <!-- model contact-->
+        
+      <div class="modal modal fade" id="contact" data-bs-backdrop='static' style="margin-top: 100px;">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+            <form action="updateContact" method="post">
+               <div class="modal-header">
+               <h3>Contact Update</h3>
+            <button type="button" class="btn btn-close p-1" data-bs-dismiss='modal'>X</button>   
+            </div>
+    <div class="modal-body ">
+     
+  <div class="row">
+  <div class="col-sm-12">
+   <input class="form-control mt-1" type="text" name="contact" id="" placeholder="contact Number">
+  </div>
+  </div>
+    </div>
+    <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-warning" style="width: 98%;color:black;">Submit</button>
+    <a type="button" class="btn btn-outline-warning" style="width: 98%;color:black;" data-bs-dismiss='modal'>close</a>
+    </div></form>
+    </div>
+    </div></div>
+        <!-- model end -->
+        
+         <!-- model price-->
+        
+      <div class="modal modal fade" id="price" data-bs-backdrop='static' style="margin-top: 100px;">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+            <form action="updateprice" method="post">
+               <div class="modal-header">
+               <h3>Update price and offer</h3>
+            <button type="button" class="btn btn-close p-1" data-bs-dismiss='modal'>X</button>   
+            </div>
+    <div class="modal-body ">
+     
+  <div class="row">
+  <div class="col-sm-12">
+   <input class="form-control mt-1" type="text" name="price" id="" placeholder="price/month"> 
+   <input class="form-control mt-1" type="text" name="offer" id="" placeholder="offer 1 Month %">
+   <input class="form-control mt-1" type="text" name="offermonth" id="" placeholder="offer 6 month%">
+   <input class="form-control mt-1" type="text" name="offeryear" id="" placeholder="offer 1 year %">
+  </div>
+  </div>
+    </div>
+    <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-warning" style="width: 98%;color:black;">Submit</button>
+    <a type="button" class="btn btn-outline-warning" style="width: 98%;color:black;" data-bs-dismiss='modal'>close</a>
+    </div></form>
+    </div>
+    </div></div>
+        <!-- model end -->
+
+          <!-- model instructor-->
+        
+      <div class="modal modal fade" id="ins" data-bs-backdrop='static' style="margin-top: 100px;">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+            <form action="updateInstructor" method="post" >
+               <div class="modal-header">
+               <h3>Update instructor details</h3>
+            <button type="button" class="btn btn-close p-1" data-bs-dismiss='modal'>X</button>   
+            </div>
+    <div class="modal-body ">
+     
+  <div class="row">
+  <div class="col-sm-12">
+   <input class="form-control mt-1" type="text" name="trainername" id="" placeholder="Name">
+   <input class="form-control mt-1" type="text" name="experience" id="" placeholder="Experience in yr.">
+ 	<select name="gender" class="form-control mt-1" style="height: 50px;">
+              <option value="" hidden="">--Select Gender--</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+              </select>
+  </div>
+  </div>
+    </div>
+    <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-warning" style="width: 98%;color:black;">Submit</button>
+    <a type="button" class="btn btn-outline-warning" style="width: 98%;color:black;" data-bs-dismiss='modal'>close</a>
+    </div></form>
+    </div>
+    </div></div>
+        <!-- model end -->
+        
+         <!-- model Details-->
+        
+      <div class="modal modal fade" id="detail" data-bs-backdrop='static' style="margin-top: 100px;">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+            <form action="updateAadhar" method="post">
+               <div class="modal-header">
+               <h3>Update Aadhar card</h3>
+            <button type="button" class="btn btn-close p-1" data-bs-dismiss='modal'>X</button>   
+            </div>
+    <div class="modal-body ">
+     
+  <div class="row">
+  <div class="col-sm-12">
+   <input class="form-control mt-1" type="text" name="aadhar" id="" placeholder="Card no.">
+ 
+  </div>
+  </div>
+    </div>
+    <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-warning" style="width: 98%;color:black;">Submit</button>
+    <a type="button" class="btn btn-outline-warning" style="width: 98%;color:black;" data-bs-dismiss='modal'>close</a>
+    </div></form>
+    </div>
+    </div></div>
+        <!-- model end -->
+   <!--Code--> 
+   <br><br><br>
+   <p style="text-align: center;">Update all your gym details ,otherwise your gym details will not be visible on our web</p>
+   <p style="text-align: center;">
+   <a href="#" class="btn btn-outline-warning mt-2 container text-center" style="color:black;width: 25%;" >Click here to check your details are visible or not</a>
+  </p>
+   <br><br><br><br><br>
+    <footer id="contact-section" class="footer-section bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h3 class="text-white">About Workout</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam facere optio eligendi.</p>
+          </div>
+
+          <div class="col-md-3 ml-auto">
+            <h3 class="text-white">Links</h3>
+            <ul class="list-unstyled footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Trainer</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <h3>Contact us</h3>
+            <a href="https://twitter.com/Tarun486Tc"><i class="fab fa-twitter social-icon"></i></a>&emsp;
+            <a href="https://www.facebook.com/profile.php?id=100008805401645"><i class="fab fa-facebook social-icon"></i></a>&emsp;
+            <a href="https://www.instagram.com/avengers/"><i class="fab fa-instagram social-icon"></i></a>&emsp;
+            <a href="mailto:tarun486.tc@gmail.com"><i class="fas fa-envelope social-icon"></i></a>
+          </div>
+
+        </div>
+
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <div class=" pt-5">
+              <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved 
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+
+
+  </div>
+  <!-- .site-wrap -->
+<script type="text/javascript">
+  
+ function clear(){
+	 document.getElementById("form1").reset();
+  }
+  
+  function span(){
+	  setTimeout(function() {
+		  $("#dis").fadeOut('slow');
+      },1000);
+	 
+  }
+  
+  </script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/jquery.mb.YTPlayer.min.js"></script>
+
+
+
+
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

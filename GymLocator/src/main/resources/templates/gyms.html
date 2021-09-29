@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <title>Gym Booking</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <!--fontawesome icon-->
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script> 
+
+  
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+  <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <style type="text/css">
+   
+    body {
+    background-image: url("https://images.pexels.com/photos/669578/pexels-photo-669578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+ 
+        background-attachment: fixed;
+     
+ }
+ .flip-box {
+   background-color: transparent;
+  
+   height: 200px;
+ 
+ }
+ 
+ .flip-box-inner {
+   position: relative;
+  
+   text-align: center;
+   transition: transform 1s;
+   transform-style: preserve-3d;
+ }
+ 
+ .flip-box:hover .flip-box-inner {
+   transform: rotateY(180deg);
+ }
+ 
+ .flip-box-front, .flip-box-back {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   color: white;
+   -webkit-backface-visibility: hidden;
+   backface-visibility: hidden;
+ }
+ 
+ .flip-box-front {
+   background-color: #bbb;
+   color: black;
+ }
+ 
+ .flip-box-back {
+ margin-top:20%;
+   background: rgba(255,0,0,0.0);
+   color: black;
+   transform: rotateY(180deg);
+ }
+ a:hover {
+	color: white;
+}
+#lnk{
+color: #c83660;
+}
+#lnk:hover {
+	color: white;
+}
+.card-title{
+color: white;
+}
+
+#anim{
+
+    animation: ok 3s;
+}
+
+        @keyframes ok{
+            from{
+           
+                opacity: 0;
+				transform: rotate(-20deg);            
+				}
+            to{
+                opacity: 1;
+             transform: rotate(0deg);
+               
+            }
+        }
+ 
+    .search { 
+    position: relative; 
+    }
+.search input { text-indent: 30px;}
+.search .fa-search { 
+  position: absolute;
+  top: 8px;
+  left: 7px;
+  font-size: 15px;
+}
+    </style>
+
+
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style=" font-family: cursive;">
+
+    <div class="site-wrap">
+
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+    
+          <div class="container-fluid">
+            <div class="d-flex align-items-center">
+              <div class="site-logo">
+               <a href="logUser" >Workout<span>.</span></a>
+              </div>
+            
+                 <div class="ml-auto col-8 text-center">
+                <nav class="site-navigation position-relative offset-2" role="navigation">
+                  <ul class="site-menu main-menu js-clone-nav ml-auto">
+                  <li><form  action="gymCity" >
+                  <div class="search">
+                  <span><i class="fa fa-search "></i></span>
+  					<input type="text" placeholder="Search" name="city" class="rounded-pill" style="outline: none;width:100%"></div>
+  					<!-- <span class="errspan" ><button type="submit"  style="border: none;background-color:rgba(255,0,0,0.0);"></button></span> -->
+				</form>
+                </li>
+                  </ul>
+                </nav>
+              </div>
+              
+              <div class="ml-auto">
+                <nav class="site-navigation position-relative text-right" role="navigation">
+                  <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                     <!-- -->
+                    <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                     <li><a href="uDash" class="nav-link">Dashboard</a>
+             <li class="nav-item"><a href="logout" class="nav-link active" >Logout</a></li>
+               
+                    
+                  </ul>
+                </nav>
+                <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a>
+              </div>
+    
+            </div>
+          </div>
+    
+        </header>
+ <!--Gym Login modal -->
+       <div class="modal" id="mod" data-bs-backdrop='static'>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+            <form action="gymLogin" method="post">
+               <div class="modal-header">
+            <h3 class="fw-normal">Welcome to gym Registration guide</h3> 
+            <button type="button" class="btn btn-close" data-bs-dismiss='modal'></button>   
+            </div>
+    <div class="modal-body ">
+  <p class="card-text" align="left" >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  
+   
+   
+    </div>
+    
+    <div class="modal-footer">
+    <div>
+   
+    <button type="button" class="btn btn-primary" data-bs-dismiss='modal'>Close</button>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div> 
+ 
+<br><br><br><br>
+<!--Gym Login modal -->
+
+<div class="container-fluid" id="home-section">
+    <div class="row ">
+<div class="col-sm-2 pt-5 shadow text-center px-1" >
+<div class="text-center	px-1 container">
+ <h6 class="shadow rounded-circle "style="background-color: #345B63;color: white;font-size:35px;text-align: center;">&thinsp;Filter</h6> 
+<p style="background-color: #BFD8B8;font-size: 20px;text-align: center;" class="px-5 rounded shadow">Sort by Price :</p>
+<a href="lowToHigh" class="btn btn-secondary btn-sm mt-2 px-5">Low to high</a><br>
+<a href="highToLow" class="btn btn-secondary btn-sm mt-2 px-5">High to low</a>
+<hr style="color: white;height: 2px" class="mb-0 mt-2">
+  <a href="byCountry" class="btn btn-secondary btn-sm mt-2 px-5"> &thinsp;&thinsp;&thinsp;&thinsp;Country&thinsp;&thinsp;&thinsp;&thinsp;</a><br>
+<a href="byGymName" class="btn btn-secondary btn-sm mt-2 px-5">&thinsp;&thinsp;Gym name&thinsp;</a>
+<a href="gymData" class="btn btn-secondary btn-sm mt-2 px-5">&emsp;Default&emsp;</a>
+</div>
+
+</div>
+<div class="col-sm-8">
+<div class="container">
+<h1 align="center" class="shadow rounded-circle mx-5" style="font-family: 'Brush Script MT', cursive;color: white;">Best Gym's for you</h1><br>
+<div class="row pl-5 shadow">
+
+<table style="width: 100%;">
+    
+    
+        <tr th:each="temp:${gymData}">
+            
+            <div class="card custom-card  p-0 shadow text-center mt-5 mb-5 ml-5" id="anim" style="width: 15rem;display: inline-block;background-color:grey;border-radius: 30px;border: none;">
+            <div class="flip-box" style="height: 160px">
+              <div class="flip-box-inner">
+               <div class="flip-box-front">
+              <img src="http://thestyleinspiration.com/wp-content/uploads/2018/12/Gym-Goals-1.jpg " style="border-radius: 30px;" class="card-img-top shadow" alt="gym image" >
+            </div>
+            <div class="flip-box-back">
+              <h2>Book us</h2>
+              <p>Be fit be strong</p>
+            </div>
+              </div>
+            </div>
+            <div class="card-body">
+            <label><b>Gym Name:</b></label>
+                <span class="card-title" th:text=${temp.gymname}>NA</span><br> 
+           <!--   <label><b>Email:</b></label>
+                <span class="card-title" th:text=${temp.gymemail}>NA</span><br>  -->
+                 <label><b>Price:</b></label>
+                <span  class="card-title" th:text=${temp.price}>NA</span><br>
+            <label><b>City:</b></label>
+<!--                 <span class="card-title" th:text=${temp.addressline}>NA</span>,<br>  -->
+                <span class="card-title" th:text=${temp.city}>NA</span>,<br>
+                <label><b>State:</b></label>
+                 <span class="card-title" th:text=${temp.state}>NA</span>,<br>
+                <label><b>Country:</b></label>
+                <span class="card-title" th:text=${temp.country}>NA</span>,<br>
+               <!--  <label><b>Pincode:</b></label>
+                <span class="card-title" th:text=${temp.pincode}>NA</span><br> -->
+           <!--  <label><b>Contact:</b></label>
+                <span class="card-title" th:text=${temp.contact}>NA</span><br> -->
+           <!--  <label><b>Trainer name:</b></label>
+                <span  class="card-text" th:text=${temp.insname}>NA</span><br>  -->
+           
+            </div>
+            
+            <div class="card-footer rounded-circle text-center" style="background-color: buttonshadow;">
+
+         <a th:href="@{'/'+${temp.id}}" class="btn btn-outline-warning"  style="width: 58%;	font-weight: bold;">Details</a> 
+         
+	
+                </div>
+            </div>
+        </tr>
+    
+</table>        
+     
+   </div>
+    </div>
+</div>
+<div class="col-sm-2">
+
+<div class="card shadow " style="background-color: rgba( 255,0,0,0.0);color:gray;border: 0px;">
+<img class="card-img-top" src="https://www.drupal.org/files/project-images/reg_confirm_email_with_button_0.png" alt="Card image cap">
+<div class="card-body " align="center">
+<h5 class="card-title" align="left" style="color: black;font-weight: bold;">Card title</h5>
+<p class="card-text" align="left" >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<a href="" class="btn btn-primary btn-sm "  data-bs-toggle="modal" data-bs-target='#mod'><span>Guide to register</span><span> your gym</span></a>
+
+</div>
+</div>
+</div> 
+
+</div>
+</div>
+       <br><br><br>
+    <footer class="footer-section bg-dark pb-4" id="contact-section">
+      <div class="container">
+        <div class="row">
+       
+          <div class="col-md-4">
+            <h3 class="text-white">About Workout</h3>
+            <p style="color: grey;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam facere optio eligendi.</p>
+          </div>
+
+          <div class="col-md-3 ml-auto">
+            <h3 class="text-white">Links</h3>
+            <ul class="list-unstyled footer-links">
+              <li><a href="#" id="lnk">Home</a></li>
+              <li><a href="#" id="lnk">Trainer</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <h3>Contact us</h3>
+            <a href="https://twitter.com/Tarun486Tc" id="lnk"><i class="fab fa-twitter social-icon"></i></a>&emsp;
+            <a href="https://www.facebook.com/profile.php?id=100008805401645" id="lnk"><i class="fab fa-facebook social-icon"></i></a>&emsp;
+            <a href="https://www.instagram.com/avengers/" id="lnk"><i class="fab fa-instagram social-icon"></i></a>&emsp;
+            <a href="mailto:tarun486.tc@gmail.com" id="lnk"><i class="fas fa-envelope social-icon"></i></a>
+          </div>
+
+        </div>
+
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <div class=" pt-5">
+              <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear());</script> All rights reserved 
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+            </div>
+          </div>
+		</div>
+        </div>
+    
+    </footer>
+
+
+
+  </div>
+  <!-- .site-wrap -->
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/jquery.mb.YTPlayer.min.js"></script>
+
+
+
+
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
